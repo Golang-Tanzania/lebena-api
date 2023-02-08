@@ -1,0 +1,35 @@
+name: Go Test and Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.19.2
+
+    - name: Test the api
+      run: go test ./...
+
+    - name: Build the api
+      run: go build ./cmd/api
+
+    - name: Deploy to server
+      uses: appleboy/scp-action@main
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        source: ./lebena-api/api
+        target: "/home/${{ secrets.USERNAME }}/lebena"
