@@ -1,35 +1,48 @@
-name: Go Test and Deploy
+name: Go Test Build and Deploy
 
 on:
   push:
     branches:
       - main
-
+ 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: Set up Go
-      uses: actions/setup-go@v2
+      uses: actions/setup-go@v3
       with:
         go-version: 1.19.2
+        
+    - name: Build
+      run: go build -v ./...
 
-    - name: Test the api
-      run: go test ./...
+    - name: Test
+      run: go test -v ./...
 
-    - name: Build the api
-      run: go build ./cmd/api
-
-    - name: Deploy to server
-      uses: appleboy/scp-action@master
+    - uses: actions/upload-artifact@v2
       with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-        port: ${{ secrets.PORT }}
-        source: ./lebena-api/api
-        target: "/home/${{ secrets.USERNAME }}/lebena"
+          name: lebena-artifact
+          path: ./lebena-binary
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
+        with:
+          name: lebena-artifact
+      - name: Deploy to server
+        uses: appleboy/scp-action@master
+        with:
+           host: ${{ secrets.HOST }}
+           username: ${{ secrets.USERNAME }}
+           password: ${{ secrets.PASSWORD }}
+           port: ${{ secrets.PORT }}
+           source: ./lebena-binary
+           target: "/home/${{ secrets.USERNAME }}/lebena"
+
+ 
