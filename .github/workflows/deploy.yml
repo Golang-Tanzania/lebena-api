@@ -22,7 +22,7 @@ jobs:
     - name: Test
       run: go test -v ./...
 
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v3
       with:
           name: lebena-artifact
           path: ./lebena-binary
