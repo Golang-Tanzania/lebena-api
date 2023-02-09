@@ -45,4 +45,18 @@ jobs:
            source: ./lebena-binary
            target: "/home/${{ secrets.USERNAME }}/lebena"
 
+      - name: Start Lebena service and Reload Nginx
+        uses: appleboy/ssh-action@master
+        with:
+           host: ${{ secrets.HOST }}
+           username: ${{ secrets.USERNAME }}
+           password: ${{ secrets.PASSWORD }}
+           port: ${{ secrets.PORT }}
+           script: |
+               cd /home/${{ secrets.USERNAME }}/lebena
+               chmod +x lebena-binary
+               echo ${{ secrets.PASSWORD }} | sudo -S systemctl stop lebena.service 
+               echo ${{ secrets.PASSWORD }} | sudo -S systemctl start lebena.service 
+               echo ${{ secrets.PASSWORD }} | sudo -S systemctl reload nginx
+
  
