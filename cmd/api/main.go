@@ -64,9 +64,9 @@ func main() {
 	flag.IntVar(&cfg.limiter.burst, "limiter-burst", 4, "Rate limiter maximum burst")
 	flag.BoolVar(&cfg.limiter.enabled, "limiter-enabled", true, "Enable rate limiter")
 
-	flag.StringVar(&cfg.mailergun.domain, "mg-domain", os.Getenv("MAILGUN-DOMAIN"), "Mailgun-domain")
-	flag.StringVar(&cfg.mailergun.privateKey, "mg-privatekey", os.Getenv("MAILGUN-PRIVATEKEY"), "Mailgun-privatekey")
-	flag.StringVar(&cfg.mailergun.sender, "mg-sender", os.Getenv("MAILGUN-SENDER"), "Mailgun-sender")
+	flag.StringVar(&cfg.mailergun.domain, "mg-domain", os.Getenv("MAILGUN_DOMAIN"), "Mailgun-domain")
+	flag.StringVar(&cfg.mailergun.privateKey, "mg-privatekey", os.Getenv("MAILGUN_PRIVATEKEY"), "Mailgun-privatekey")
+	flag.StringVar(&cfg.mailergun.sender, "mg-sender", os.Getenv("MAILGUN_SENDER"), "Mailgun-sender")
 
 	flag.Parse()
 
