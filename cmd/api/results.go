@@ -11,7 +11,7 @@ func (app *application) showResultHandler(w http.ResponseWriter, r *http.Request
 
 	uuid, err := app.readIDParam(r)
 	if err != nil {
-		http.NotFound(w, r)
+		app.notFoundResponse(w,r)
 		return
 	}
 
