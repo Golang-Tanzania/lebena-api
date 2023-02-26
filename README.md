@@ -1,10 +1,10 @@
-## Lebena Sports API for Tanzania NBC Premium League
+## Lebena Sports API for Tanzania NBC Premier League
 
-The Lebena Sports API is a comprehensive solution designed to provide data and insights into the Tanzania Premium League (NBC Premium League). This API allows developers to access a vast database of information about the teams, players, matches, and statistics of the league, which can be used to power websites, mobile apps, and other digital products to offer fans a deep level of engagement with their favorite teams and players.
+The Lebena Sports API is a comprehensive solution designed to provide data and insights into the Tanzania Premier League (NBC Premier League). This API allows developers to access a vast database of information about the teams, players, matches, and statistics of the league, which can be used to power websites, mobile apps, and other digital products to offer fans a deep level of engagement with their favorite teams and players.
 
 ## Key Features
 
-- Detailed data on all the teams, players, and matches in the NBC Premium League
+- Detailed data on all the teams, players, and matches in the NBC Premier League
 - Rich statistics and insights to help fans make informed decisions about their favorite teams and players
 - Player performance metrics, team and player rankings, match results, and much more
 
@@ -22,7 +22,7 @@ You can go through our comprehensive documentation [Lebena sports api documentat
 - Sports enthusiasts
 - Website developers
 - Data analysts
-- Anyone looking to gain a deeper understanding of the NBC Premium League and its players
+- Anyone looking to gain a deeper understanding of the NBC Premier League and its players
 
 With its rich data and powerful features, the Lebena Sports API is the ideal solution for anyone looking to create engaging and informative products that will delight fans and help them stay connected with the league they love.
 
